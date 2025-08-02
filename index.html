@@ -1,0 +1,999 @@
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: linen;
+        }
+
+        html {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #triangle-left {
+            width: 0;
+            height: 0;
+            border-top: 75px solid transparent;
+            border-right: 50px solid red;
+            border-bottom: 75px solid transparent;
+            text-align: right;
+            padding: -150px -20px 10px 20px;
+            float: left;
+        }
+
+        .application {
+            width: 200;
+            height: 150px;
+            position: relative;
+
+        }
+
+        .application>.layer1 {
+
+            position: absolute;
+
+        }
+
+        #nozero {
+            float: right;
+            outline: 2px solid;
+            width: 150;
+            height: 150px;
+        }
+
+        .square {
+            width: 50px;
+            height: 50px;
+            outline: 1px solid;
+            float: left;
+            text-align: center;
+            line-height: 50px;
+            z-index: 3;
+            padding: -4px;
+        }
+
+        #morespace {
+            height: 400px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .myButton {
+            background-color: #eaf5d2;
+            border-radius: 4px;
+            border: 1px solid #b2b8ad;
+            display: inline-block;
+            cursor: pointer;
+            color: #757d6f;
+            font-family: Arial;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 6px 24px;
+        }
+
+        .myButton:hover {
+            background-color: #9ba892;
+        }
+
+        .myButton:active {
+            position: relative;
+            top: 1px;
+        }
+
+        .circle {
+            border-radius: 50%;
+            width: 15px;
+            height: 15px;
+            padding: 3px;
+            background: rgb(252, 140, 140);
+            border: 1px solid #000;
+            color: #000;
+            text-align: center;
+            font: 9px Arial, sans-serif;
+            position: absolute;
+            z-index: 10;
+        }
+
+        /*    .square {
+      width: 100px;
+      height: 100px;
+      background: cyan;
+    }
+    */
+    </style>
+
+    <script>
+
+    </script>
+</head>
+
+<body>
+    <div class="introduction">
+        <p>Hello there, welcome to the training</p>
+        <p>I hope you appreciate this application <div style="font-size: 30px;">(This app is no longer maintained and therefore is left there for portfolio purpose)</div>
+        </p>
+    </div>
+    <!-- ************* -->
+    <div class="application">
+        <!--first layer for excercize roulette layout -->
+        <div id="triangle-left">
+            <div id="0" style="position: relative; left: 25px; top: -10px;">0</div>
+        </div>
+        <div id="nozero">
+            <div class="square" id="3">3</div>
+            <div class="square" id="6">6</div>
+            <div class="square" id="9">36</div>
+
+            <div class="square" id="2">2</div>
+            <div class="square" id="5">5</div>
+            <div class="square" id="8">35</div>
+
+            <div class="square" id="1">1</div>
+            <div class="square" id="4">4</div>
+            <div class="square" id="7">34</div>
+        </div>
+        <!--second layer for excercize placing bets -->
+        <div id="layer1">
+            <!--
+            <div class="circle" id="straight1" style="top: 65px ;left: 15px;">st1</div>
+            <div class="circle" id="straight2" style="top: 115px ;left: 65px;">st2</div>
+            <div class="circle" id="straight3" style="top: 65px ;left: 65px;">st3</div>
+            <div class="circle" id="straight4" style="top: 15px ;left: 65px;">st4</div>
+            <div class="circle" id="straight5" style="top: 115px ;left: 115px;">st5</div>
+            <div class="circle" id="straight6" style="top: 65px ;left: 115px;">st6</div>
+            <div class="circle" id="straight7" style="top: 15px ;left: 115px;">st7</div>
+            <div class="circle" id="straight8" style="top: 115px ;left: 165px;">st8</div>
+            <div class="circle" id="straight9" style="top: 65px ;left: 165px;">st9</div>
+            <div class="circle" id="straight10" style="top: 15px ;left: 165px;">st10</div>
+            <div class="circle" id="split1" style="top: 115px ;left: 40px;">sp1</div>
+            <div class="circle" id="split2" style="top: 65px ;left: 40px;">sp2</div>
+            <div class="circle" id="split3" style="top: 15px ;left: 40px;">sp3</div>
+            <div class="circle" id="split4" style="top: 90px ;left: 65px;">sp4</div>
+            <div class="circle" id="split5" style="top: 40px ;left: 65px;">sp5</div>
+            <div class="circle" id="split6" style="top: 115px ;left: 90px;">sp6</div>
+            <div class="circle" id="split7" style="top: 65px ;left: 90px;">sp7</div>
+            <div class="circle" id="split8" style="top: 15px ;left: 90px;">sp8</div>
+            <div class="circle" id="split9" style="top: 90px ;left: 115px;">sp9</div>
+            <div class="circle" id="split10" style="top: 40px ;left: 115px;">sp10</div>
+            <div class="circle" id="split11" style="top: 115px ;left: 140px;">sp11</div>
+            <div class="circle" id="split12" style="top: 65px ;left: 140px;">sp12</div>
+            <div class="circle" id="split13" style="top: 15px ;left: 140px;">sp13</div>
+            <div class="circle" id="split14" style="top: 90px ;left: 165px;">sp14</div>
+            <div class="circle" id="split15" style="top: 40px ;left: 165px;">sp15</div>
+            <div class="circle" id="street1" style="top: 90px ;left: 40px;">str1</div>
+            <div class="circle" id="street2" style="top: 40px ;left: 40px;">str2</div>
+            <div class="circle" id="street3" style="top: -10px ;left: 65px;">str3</div>
+            <div class="circle" id="street4" style="top: -10px ;left: 115px;">str4</div>
+            <div class="circle" id="street5" style="top: -10px ;left: 165px;">str5</div>
+            <div class="circle" id="corner1" style="top: -10px ;left: 40px;">cor1</div>
+            <div class="circle" id="corner2" style="top: 90px ;left: 90px;">cor2</div>
+            <div class="circle" id="corner3" style="top: 40px ;left: 90px;">cor3</div>
+            <div class="circle" id="corner4" style="top: 90px ;left: 140px;">cor4</div>
+            <div class="circle" id="corner5" style="top: 40px ;left: 140px;">cor5</div>
+            <div class="circle" id="line1" style="top: -10px ;left: 90px;">lin1</div>
+            <div class="circle" id="line2" style="top: -10px ;left: 140px;">lin2</div>
+            -->
+
+        </div>
+    </div>
+    <!-- ************* -->
+    <div id="morespace">
+        <a class="myButton" id="start" onclick="runexercise()">Start training</a>
+        <p>Winning number is <span id="winning_n" style="font-size: larger;"></span></p>
+        <label for="answer">Insert answer</label><br>
+        <input type="text" id="answer" name="answer">
+        <a class="myButton" id="submitresult" onclick="chkresult()">Submit result</a>
+        <p>Your answer is <span id="result"></span></p>
+        <p id="rightresult" style="color:green;"></p>
+
+    </div>
+    <!-- ************* -->
+    <div class="licence">
+        <p>
+            This page and application file is released under the :</br>
+            GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</br>
+            for more info : <a href="https://choosealicense.com/licenses/gpl-3.0/">terms and conditions</a></br>
+            Author: <a href="https://originmaster24.github.io/">originmaster24</a> originmaster24 (at) gmail.com
+        </p>
+    </div>
+    <script>
+        var correctresult = 0;
+        let MAX_CHIPS = 20;
+        let straight1 = 0;
+        let straight2 = 0;
+        let straight3 = 0;
+        let straight4 = 0;
+        let straight5 = 0;
+        let straight6 = 0;
+        let straight7 = 0;
+        let straight8 = 0;
+        let straight9 = 0;
+        let straight10 = 0;
+        let corner1 = 0;
+        let corner2 = 0;
+        let corner3 = 0;
+        let corner4 = 0;
+        let corner5 = 0;
+        let split1 = 0;
+        let split2 = 0;
+        let split3 = 0;
+        let split4 = 0;
+        let split5 = 0;
+        let split6 = 0;
+        let split7 = 0;
+        let split8 = 0;
+        let split9 = 0;
+        let split10 = 0;
+        let split11 = 0;
+        let split12 = 0;
+        let split13 = 0;
+        let split14 = 0;
+        let split15 = 0;
+        let street1 = 0;
+        let street2 = 0;
+        let street3 = 0;
+        let street4 = 0;
+        let street5 = 0;
+        let line1 = 0;
+        let line2 = 0;
+
+        function resetbet() {
+            straight1 = 0;
+            straight2 = 0;
+            straight3 = 0;
+            straight4 = 0;
+            straight5 = 0;
+            straight6 = 0;
+            straight7 = 0;
+            straight8 = 0;
+            straight9 = 0;
+            straight10 = 0;
+            corner1 = 0;
+            corner2 = 0;
+            corner3 = 0;
+            corner4 = 0;
+            corner5 = 0;
+            split1 = 0;
+            split2 = 0;
+            split3 = 0;
+            split4 = 0;
+            split5 = 0;
+            split6 = 0;
+            split7 = 0;
+            split8 = 0;
+            split9 = 0;
+            split10 = 0;
+            split11 = 0;
+            split12 = 0;
+            split13 = 0;
+            split14 = 0;
+            split15 = 0;
+            street1 = 0;
+            street2 = 0;
+            street3 = 0;
+            street4 = 0;
+            street5 = 0;
+            line1 = 0;
+            line2 = 0;
+        }
+
+        function winning0() {
+            straight1 = Math.round(Math.random());
+            split1 = Math.round(Math.random());
+            split2 = Math.round(Math.random());
+            split3 = Math.round(Math.random());
+            street1 = Math.round(Math.random());
+            street2 = Math.round(Math.random());
+            corner1 = Math.round(Math.random());
+            if (straight1) {
+                straight1 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (split1) {
+                split1 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (split2) {
+                split2 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (split3) {
+                split3 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (street1) {
+                street1 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (street2) {
+                street2 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (corner1) {
+                corner1 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+        }
+
+        function winning1() {
+            straight2 = Math.round(Math.random());
+            split1 = Math.round(Math.random());
+            split4 = Math.round(Math.random());
+            split6 = Math.round(Math.random());
+            street1 = Math.round(Math.random());
+            street3 = Math.round(Math.random());
+            corner1 = Math.round(Math.random());
+            corner2 = Math.round(Math.random());
+            line1 = Math.round(Math.random());
+            if (straight2) {
+                straight2 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (split1) {
+                split1 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (split4) {
+                split4 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (split6) {
+                split6 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (street1) {
+                street1 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (street3) {
+                street3 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (corner1) {
+                corner1 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (corner2) {
+                corner2 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (line1) {
+                line1 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+
+        }
+
+        function winning2() {
+            straight3 = Math.round(Math.random());
+            split2 = Math.round(Math.random());
+            split4 = Math.round(Math.random());
+            split5 = Math.round(Math.random());
+            split7 = Math.round(Math.random());
+            street1 = Math.round(Math.random());
+            street2 = Math.round(Math.random());
+            street3 = Math.round(Math.random());
+            corner1 = Math.round(Math.random());
+            corner2 = Math.round(Math.random());
+            corner3 = Math.round(Math.random());
+            line1 = Math.round(Math.random());
+            if (straight3) {
+                straight3 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (split2) {
+                split2 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (split4) {
+                split4 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (split5) {
+                split5 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (split7) {
+                split7 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (street1) {
+                street1 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (street2) {
+                street2 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (street3) {
+                street3 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (corner1) {
+                corner1 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (corner2) {
+                corner2 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (corner3) {
+                corner3 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (line1) {
+                line1 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+
+        }
+
+        function winning3() {
+            straight4 = Math.round(Math.random());
+            split3 = Math.round(Math.random());
+            split5 = Math.round(Math.random());
+            split8 = Math.round(Math.random());
+            street2 = Math.round(Math.random());
+            street3 = Math.round(Math.random());
+            corner1 = Math.round(Math.random());
+            corner3 = Math.round(Math.random());
+            line1 = Math.round(Math.random());
+            if (straight4) {
+                straight4 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (split3) {
+                split3 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (split5) {
+                split5 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (split8) {
+                split8 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (street2) {
+                street2 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (street3) {
+                street3 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (corner1) {
+                corner1 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (corner3) {
+                corner3 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (line1) {
+                line1 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+
+        }
+
+        function winning4() {
+            straight5 = Math.round(Math.random());
+            split6 = Math.round(Math.random());
+            split9 = Math.round(Math.random());
+            split11 = Math.round(Math.random());
+            street4 = Math.round(Math.random());
+            corner2 = Math.round(Math.random());
+            corner4 = Math.round(Math.random());
+            line1 = Math.round(Math.random());
+            line2 = Math.round(Math.random());
+            if (straight5) {
+                straight5 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (split6) {
+                split6 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (split9) {
+                split9 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (split11) {
+                split11 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (street4) {
+                street4 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (corner2) {
+                corner2 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (corner4) {
+                corner4 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (line1) {
+                line1 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (line2) {
+                line2 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+
+        }
+
+        function winning5() {
+            straight6 = Math.round(Math.random());
+            split7 = Math.round(Math.random());
+            split9 = Math.round(Math.random());
+            split10 = Math.round(Math.random());
+            split12 = Math.round(Math.random());
+            street4 = Math.round(Math.random());
+            corner2 = Math.round(Math.random());
+            corner3 = Math.round(Math.random());
+            corner4 = Math.round(Math.random());
+            corner5 = Math.round(Math.random());
+            line1 = Math.round(Math.random());
+            line2 = Math.round(Math.random());
+            if (straight6) {
+                straight6 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (split7) {
+                split7 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (split9) {
+                split9 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (split10) {
+                split10 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (split12) {
+                split12 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (street4) {
+                street4 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (corner2) {
+                corner2 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (corner3) {
+                corner3 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (corner4) {
+                corner4 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (corner5) {
+                corner5 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (line1) {
+                line1 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (line2) {
+                line2 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+
+        }
+
+        function winning6() {
+            straight7 = Math.round(Math.random());
+            split8 = Math.round(Math.random());
+            split10 = Math.round(Math.random());
+            split13 = Math.round(Math.random());
+            street4 = Math.round(Math.random());
+            corner3 = Math.round(Math.random());
+            corner5 = Math.round(Math.random());
+            line1 = Math.round(Math.random());
+            line2 = Math.round(Math.random());
+            if (straight7) {
+                straight7 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (split8) {
+                split8 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (split10) {
+                split10 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (split13) {
+                split13 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (street4) {
+                street4 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (corner3) {
+                corner3 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (corner5) {
+                corner5 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (line1) {
+                line1 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (line2) {
+                line2 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+
+        }
+
+        function winning7() {
+            straight8 = Math.round(Math.random());
+            split11 = Math.round(Math.random());
+            split14 = Math.round(Math.random());
+            street5 = Math.round(Math.random());
+            corner4 = Math.round(Math.random());
+            line2 = Math.round(Math.random());
+            if (straight8) {
+                straight8 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (split11) {
+                split11 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (split14) {
+                split14 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (street5) {
+                street5 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (corner4) {
+                corner4 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (line2) {
+                line2 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+        }
+
+        function winning8() {
+
+            straight9 = Math.round(Math.random());
+            split12 = Math.round(Math.random());
+            split14 = Math.round(Math.random());
+            split15 = Math.round(Math.random());
+            street5 = Math.round(Math.random());
+            corner4 = Math.round(Math.random());
+            corner5 = Math.round(Math.random());
+            line2 = Math.round(Math.random());
+            if (straight9) {
+                straight9 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (split12) {
+                split12 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (split14) {
+                split14 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (split15) {
+                split15 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (street5) {
+                street5 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (corner4) {
+                corner4 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (corner5) {
+                corner5 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (line2) {
+                line2 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+        }
+
+        function winning9() {
+            straight10 = Math.round(Math.random());
+            split13 = Math.round(Math.random());
+            split15 = Math.round(Math.random());
+            street5 = Math.round(Math.random());
+            corner5 = Math.round(Math.random());
+            line2 = Math.round(Math.random());
+            if (straight10) {
+                straight10 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (split13) {
+                split13 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (split15) {
+                split15 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (street5) {
+                street5 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (corner5) {
+                corner5 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+            if (line2) {
+                line2 = Math.floor(Math.random() * 100) % MAX_CHIPS + 1;
+            }
+        }
+
+        function chkbettype(x, parameter) {
+            //console.log("chkbettype x=" + x);
+            switch (x) {
+                case "straight1":
+                    if (parameter == "top")
+                        return 65;
+                    if (parameter == "left")
+                        return 15;
+                case "straight2":
+                    if (parameter == "top")
+                        return 115;
+                    if (parameter == "left")
+                        return 65;
+                case "straight3":
+                    if (parameter == "top")
+                        return 65;
+                    if (parameter == "left")
+                        return 65;
+                case "straight4":
+                    if (parameter == "top")
+                        return 15;
+                    if (parameter == "left")
+                        return 65;
+                case "straight5":
+                    if (parameter == "top")
+                        return 115;
+                    if (parameter == "left")
+                        return 115;
+                case "straight6":
+                    if (parameter == "top")
+                        return 65;
+                    if (parameter == "left")
+                        return 115;
+                case "straight7":
+                    if (parameter == "top")
+                        return 15;
+                    if (parameter == "left")
+                        return 115;
+                case "straight8":
+                    if (parameter == "top")
+                        return 115;
+                    if (parameter == "left")
+                        return 165;
+                case "straight9":
+                    if (parameter == "top")
+                        return 65;
+                    if (parameter == "left")
+                        return 165;
+                case "straight10":
+                    if (parameter == "top")
+                        return 15;
+                    if (parameter == "left")
+                        return 165;
+                case "split1":
+                    if (parameter == "top")
+                        return 115;
+                    if (parameter == "left")
+                        return 40;
+                case "split2":
+                    if (parameter == "top")
+                        return 65;
+                    if (parameter == "left")
+                        return 40;
+                case "split3":
+                    if (parameter == "top")
+                        return 15;
+                    if (parameter == "left")
+                        return 40;
+                case "split4":
+                    if (parameter == "top")
+                        return 90;
+                    if (parameter == "left")
+                        return 65;
+                case "split5":
+                    if (parameter == "top")
+                        return 40;
+                    if (parameter == "left")
+                        return 65;
+                case "split6":
+                    if (parameter == "top")
+                        return 115;
+                    if (parameter == "left")
+                        return 90;
+                case "split7":
+                    if (parameter == "top")
+                        return 65;
+                    if (parameter == "left")
+                        return 90;
+                case "split8":
+                    if (parameter == "top")
+                        return 15;
+                    if (parameter == "left")
+                        return 90;
+                case "split9":
+                    if (parameter == "top")
+                        return 90;
+                    if (parameter == "left")
+                        return 115;
+                case "split10":
+                    if (parameter == "top")
+                        return 40;
+                    if (parameter == "left")
+                        return 115;
+                case "split11":
+                    if (parameter == "top")
+                        return 115;
+                    if (parameter == "left")
+                        return 140;
+                case "split12":
+                    if (parameter == "top")
+                        return 65;
+                    if (parameter == "left")
+                        return 140;
+                case "split13":
+                    if (parameter == "top")
+                        return 15;
+                    if (parameter == "left")
+                        return 140;
+                case "split14":
+                    if (parameter == "top")
+                        return 90;
+                    if (parameter == "left")
+                        return 165;
+                case "split15":
+                    if (parameter == "top")
+                        return 40;
+                    if (parameter == "left")
+                        return 165;
+                case "street1":
+                    if (parameter == "top")
+                        return 90;
+                    if (parameter == "left")
+                        return 40;
+                case "street2":
+                    if (parameter == "top")
+                        return 40;
+                    if (parameter == "left")
+                        return 40;
+                case "street3":
+                    if (parameter == "top")
+                        return -10;
+                    if (parameter == "left")
+                        return 65;
+                case "street4":
+                    if (parameter == "top")
+                        return -10;
+                    if (parameter == "left")
+                        return 115;
+                case "street5":
+                    if (parameter == "top")
+                        return -10;
+                    if (parameter == "left")
+                        return 165;
+                case "corner1":
+                    if (parameter == "top")
+                        return -10;
+                    if (parameter == "left")
+                        return 40;
+                case "corner2":
+                    if (parameter == "top")
+                        return 90;
+                    if (parameter == "left")
+                        return 90;
+                case "corner3":
+                    if (parameter == "top")
+                        return 40;
+                    if (parameter == "left")
+                        return 90;
+                case "corner4":
+                    if (parameter == "top")
+                        return 90;
+                    if (parameter == "left")
+                        return 140;
+                case "corner5":
+                    if (parameter == "top")
+                        return 40;
+                    if (parameter == "left")
+                        return 140;
+                case "line1":
+                    if (parameter == "top")
+                        return -10;
+                    if (parameter == "left")
+                        return 90;
+                case "line2":
+                    if (parameter == "top")
+                        return -10;
+                    if (parameter == "left")
+                        return 140;
+            }
+        }
+
+        function displaybet(r1) {
+            let everyvar = [
+                "straight1",
+                "straight2",
+                "straight3",
+                "straight4",
+                "straight5",
+                "straight6",
+                "straight7",
+                "straight8",
+                "straight9",
+                "straight10",
+                "corner1",
+                "corner2",
+                "corner3",
+                "corner4",
+                "corner5",
+                "split1",
+                "split2",
+                "split3",
+                "split4",
+                "split5",
+                "split6",
+                "split7",
+                "split8",
+                "split9",
+                "split10",
+                "split11",
+                "split12",
+                "split13",
+                "split14",
+                "split15",
+                "street1",
+                "street2",
+                "street3",
+                "street4",
+                "street5",
+                "line1",
+                "line2"
+            ]
+            var newItem = "";
+            //debug     console.log("");
+            for (x of everyvar) {
+                let top = chkbettype(x, "top");
+                let left = chkbettype(x, "left");
+                if (eval(x) > 0) {
+                    newItem = newItem + "<div class=\"circle\" id=\"" + x + "\" style=\"top: " + top + "px ;left: " +
+                        left + "px;\">" + eval(x) + "</div>";
+                }
+                //debug                  console.log(newItem);
+            }
+            //debug              console.log(newItem);
+            document.getElementById("layer1").innerHTML = newItem;
+        }
+
+        function winning_n(random1) {
+            if (random1 == 7)
+                return 34;
+            if (random1 == 8)
+                return 35;
+            if (random1 == 9)
+                return 36;
+            return random1;
+        }
+
+        function calcresult() {
+            let straights = straight1 + straight2 + straight3 + straight4 + straight5 + straight6 + straight7 +
+                straight8 + straight9 + straight10;
+            let splits = split1 + split2 + split3 + split4 + split5 + split6 + split7 + split8 + split9 + split10 +
+                split11 + split12 + split13 + split14 + split15;
+            let corners = corner1 + corner2 + corner3 + corner4 + corner5;
+            let streets = street1 + street2 + street3 + street4 + street5;
+            let lines = line1 + line2;
+            correctresult = straights * 35 + splits * 17 + corners * 8 + streets * 11 + lines * 5;
+        }
+
+        function runexercise() {
+            //cancel previus bet
+            resetbet();
+            //choose which winning number
+            let random1 = Math.floor(Math.random() * 10);
+            //debug     console.log(random1);
+            //print winning number
+            document.getElementById("winning_n").innerHTML = winning_n(random1);
+
+            switch (random1) {
+                case 0:
+                    winning0(); //calculation on the background
+                    displaybet(random1);
+                    break;
+                case 1:
+                    winning1();
+                    displaybet(random1);
+                    break;
+                case 2:
+                    winning2();
+                    displaybet(random1);
+                    break;
+                case 3:
+                    winning3();
+                    displaybet(random1);
+                    break;
+                case 4:
+                    winning4();
+                    displaybet(random1);
+                    break;
+                case 5:
+                    winning5()
+                    displaybet(random1);
+                    break;
+                case 6:
+                    winning6();
+                    displaybet(random1);
+                    break;
+                case 7:
+                    winning7();
+                    displaybet(random1);
+                    break;
+                case 8:
+                    winning8();
+                    displaybet(random1);
+                    break;
+                case 9:
+                    winning9();
+                    displaybet(random1);
+                    break;
+            }
+
+            calcresult();
+
+        }
+
+        function chkresult() {
+            let answer = document.getElementById('answer').value;
+            if (answer == correctresult)
+                document.getElementById("result").innerHTML = "CORRECT";
+            else
+                document.getElementById("result").innerHTML = "WRONG";
+            document.getElementById("rightresult").innerHTML = "The right result is " + correctresult;
+        }
+    </script>
+</body>
+
+</html>
